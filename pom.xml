@@ -7,6 +7,18 @@
     <groupId>com.glqdlt.common</groupId>
     <artifactId>parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <developers>
+        <developer>
+            <name>Jhun, Il Woong</name>
+            <email>dlfdnd0725@gmail.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>entity</module>
+    </modules>
 
 
 </project>

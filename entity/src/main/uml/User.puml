@@ -1,0 +1,119 @@
+@startuml
+
+package jhuncompany{
+    interface JhunCompany{
+    }
+}
+
+package bookstore{
+
+interface BookStore
+
+}
+
+
+package user{
+
+interface User{
+
+    +getEmail()
+    +setEmail(Email)
+    +getPassword()
+    +setPassword(Password)
+    +getName()
+    +setName(Name)
+    +getId()
+    +setId(Id)
+    +getJoinDate()
+    +setJoinDate(JoinDate)
+}
+
+abstract class UserImpl implements User{
+    -name
+    -password
+    -id
+    -userId
+    -joinDate
+    -email
+
+}
+
+class JhunCompanyUser extends UserImpl implements JhunCompany{
+    -messenger
+    +getMessenger()
+    +setMessenger(Messenger)
+}
+
+abstract class BookStoreUser extends UserImpl implements BookStore{
+    -role
+    -authorities
+    +getRole()
+    +setRole(Role)
+    +getAuthorities()
+    +setAuthorities(Authorities)
+    +addAuthority(BookStoreAuthority)
+}
+
+    package user.service{
+        class ServiceCustomer extends BookStoreUser{
+            -address
+            +getAddress()
+            +setAddress(Address)
+            +getRole()
+            +setRole(BookStoreServiceCustomerLevel)
+            +getAuthorities()
+            +setAuthorities(BookStoreServiceAuthorities)
+            +addAuthority(BookStoreServiceAuthority)
+        }
+    }
+    package user.cms{
+        class CmsOperator extends BookStoreUser{
+            -jhunCompanyUser
+            +getJhunCompanyUser()
+            +setJhunCompanyUser(JhunCompanyUser)
+            +getRole()
+            +setRole(BookStoreCmsScope)
+            +getAuthorities()
+            +setAuthorities(BookStoreCmsAuthorities)
+            +addAuthority(BookStoreCmsAuthority)
+        }
+    }
+
+}
+
+package authorization{
+
+package role{
+interface Role
+
+    abstract BookStoreRole implements BookStore, Role
+    package role.service{
+    class BookStoreServiceCustomerLevel extends BookStoreRole
+    }
+    package role.cms{
+    class BookStoreCmsScope extends BookStoreRole
+    }
+
+}
+
+package authority{
+interface Authority
+abstract BookStoreAuthority implements BookStore, Authority
+
+package authority.cms{
+class BookStoreCmsAuthority extends BookStoreAuthority
+}
+
+package authority.service{
+class BookStoreServiceAuthority extends BookStoreAuthority
+}
+
+}
+
+JhunCompanyUser -* CmsOperator
+
+BookStoreServiceAuthority -* ServiceCustomer
+
+}
+
+@enduml
