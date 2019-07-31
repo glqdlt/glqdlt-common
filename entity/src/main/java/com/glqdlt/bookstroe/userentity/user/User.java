@@ -1,5 +1,8 @@
 package com.glqdlt.bookstroe.userentity.user;
 
+/**
+ * @author jhun
+ */
 public interface User {
     String getName();
     void setName(String name);
