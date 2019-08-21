@@ -23,6 +23,7 @@
     <modules>
         <module>entity</module>
         <module>web-service-helper</module>
+        <module>guard-api</module>
     </modules>
 
 
