@@ -13,6 +13,10 @@
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     </properties>
 
+    <scm>
+        <url>https://github.com/glqdlt/glqdlt-common</url>
+    </scm>
+
     <developers>
         <developer>
             <name>Jhun, Il Woong</name>
